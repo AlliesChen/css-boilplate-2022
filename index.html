@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&family=Roboto+Mono:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="module" src="script.js" defer></script>
+
+<body>
+  <div class="container">
+    <h1 id="title">Demo for modern CSS boilplate?</h1>
+
+    <small>發佈時間：2022/12/31</small>
+    <p data-link="smoothScroll" style="visibility: hidden;">回到 <enhanced-link href="#smoothScroll">#Enable smooth
+        scrolling 段落</enhanced-link>
+    </p>
+
+    <p style="text-align: justify;">最近讀到 LogRocket 的 <enhanced-link
+        href="https://blog.logrocket.com/what-should-modern-css-boilerplate-look-like/">
+        What should a
+        modern CSS boilplate look like?</enhanced-link> 說到 CSS reset 的觀念，隨著時代演進，不該在只像過往一樣把所有瀏覽器預設的 CSS
+      屬性清乾淨，再重新加上去，可以思考一下其中的屬性是不是有保留的價值，文章很好，但就是...沒有範例，只給了程式碼，所以我做了這個網頁（右下角的小標籤可以連到 <enhanced-link
+        href="https://replit.com/@AlliesChen/css-boilplate-2022#index.html">Replit 看原始碼</enhanced-link>
+      ），呈現文章中所描述的狀況，或是提供我找到的範例，期待可以作為這些條目的閱讀、操作，和理解的輔助😁。
+    </p>
+    <article>
+      <h2>Don't reset margins</h2>
+      <p>瀏覽器合理地預設了一些元素的邊界值，這篇文章中的 header 和 p tags 都沒有重設過邊界值，如果把它們 reset 掉的話，呈現出來如下方的灰底區：</p>
+      <no-margin-block class="demo-block">
+        <h3>h3 and p tags in no margin block</h3>
+        <p>If you reset the margins they looks like this</p>
+      </no-margin-block>
+    </article>
+    <article>
+      <h2>Definitely reset the box model</h2>
+      <p>因為 border-box 是比較後面才出來的，為了不影響過去的網站設定，它不是瀏覽器預設的 box model 設定，如果我們不主動做 box-sizing: border-box，對於有 padding 和
+        margin 的元素，就很容易超出預想的元素大小：
+      </p>
+      <content-box class="demo-block">
+        <p style="box-sizing: content-box">p tag from content-box has set to width: 100%</p>
+      </content-box>
+    </article>
+    <article>
+      <h2>What you do with borders is up to you</h2>
+      <p>開發者可以自己決定要不要保留元素預設的外框線：</p>
+      <div class="col__flex--1 demo-block">
+        <border-handler border>
+          <input placeholder="input with default border">
+        </border-handler>
+        <border-handler>
+          <input placeholder="input without default border">
+        </border-handler>
+      </div>
+    </article>
+
+    <article>
+      <h2>Force images to behave</h2>
+      <p>img tag 預設是 display: inline，在現代應該是相對少見的選擇，並且，圖片的大小取決於其容器而不是圖片本身更合理對吧？</p>
+      <enhanced-link href="https://picsum.photos/">圖片來源：
+        Lorem Picsum</enhanced-link>
+      <div class="demo-block stack expand-width">
+        <figure>
+          <span>預設的 img 樣式</span>
+          <img
+            src="https://picsum.photos/536/354"
+            class="default-img"
+          >
+        </figure>
+        <figure>
+          <span>有重設過的 img 樣式</span>
+          <image-block src="https://picsum.photos/536/354"></image-block>
+        </figure>
+      </div>
+    </article>
+    <article>
+      <h2>Reset (most) lists</h2>
+      <p>ol、ul 和 menu tag 的 marker，有時候讓內容更難讀，但也許，比如說在文章的段落中 (article tag) 該留下它們：</p>
+      <div class="col__flex--1">
+        <section class="demo-block">
+          Ordered list:
+
+          <ol role="list">
+            <li>foo</li>
+            <li>bar</li>
+          </ol>
+          <plain-o-list>
+            <li>foo</li>
+            <li>bar</li>
+          </plain-o-list>
+        </section>
+
+        <section class="demo-block">
+          Unordered list:
+
+          <ul role="list">
+            <li>beep</li>
+            <li>boop</li>
+          </ul>
+          <plain-u-list>
+            <li>beep</li>
+            <li>boop</li>
+          </plain-u-list>
+        </section>
+
+        <section class="demo-block">
+          Menu:
+
+          <menu role="list">
+            <li>hello</li>
+            <li>world</li>
+          </menu>
+          <plain-menu>
+            <li>hello</li>
+            <li>world</li>
+          </plain-menu>
+        </section>
+      </div>
+    </article>
+    <article>
+      <h2 id="enhancedLink">Enhance link underlines</h2>
+      <p>透過調整 underline 樣式的位置與線粗能讓 anchor tag 更美觀：</p>
+      <div class="col__flex--1 demo-block">
+        <p>沒有調整底線樣式的</p>
+        <a href="#title">回到標題</a>
+        <p>有調整底線樣式的</p>
+        <enhanced-link href="#smoothScroll">去到 #Enable smooth scrolling 段落</enhanced-link>
+      </div>
+    </article>
+
+    <article>
+      <h2>Change the root font size</h2>
+      <p>可以針對 html 的 font-size 屬性做調整讓 rem 以 10px 為單位：</p>
+      <div class="demo-block">
+        <p>預設的 font-size</p>
+        <p class="font-sm">font-size 設為 62.5%</p>
+      </div>
+    </article>
+
+    <article>
+      <h2>Disable the text inflection algorithm</h2>
+      <p>這個我不知道怎麼展示，可以參考 Kilian Valkhof 文章中的圖片說明：</p>
+      <enhanced-link href="https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/">Your
+        CSS reset needs text-size-adjust (probably)</enhanced-link>
+    </article>
+
+    <article>
+      <h2 id="smoothScroll">Enable smooth scrolling</h2>
+      <p>這個的效果，在點選連結,頁面捲動到頁面中該元素的過程中可以看出來：</p>
+      <section class="demo-block">
+        <enhanced-link href="#enhancedLink">#Enhance link underlines</enhanced-link>
+        <!-- reference: https://web.dev/building-a-switch-component/ -->
+        <label for="switch" class="gui-switch">
+          scroll-behavior
+          <input type="checkbox" role="switch" id="switch">
+        </label>
+      </section>
+      <small>這個 switch 按鈕參考自 <enhanced-link href="https://web.dev/patterns/components/switch/">web.dev</enhanced-link>
+      </small>
+    </article>
+
+    <article>
+      <h2>Rethink how focus works</h2>
+      <p>這個我試不出來，可以參考 CSS-Tricks 中的圖片說明：</p>
+      <enhanced-link href="https://css-tricks.com/almanac/selectors/f/focus-visible/">:focus-visible</enhanced-link>
+    </article>
+
+    <article>
+      <h2>Provide interactive elements with a cursor</h2>
+      <p>將常見可以互動的元素的滑鼠遊標改為指標：</p>
+      <div class="col__flex--1">
+        <small>如果沒有功能，也許只用遊標是合理的？</small>
+        <section class="col__flex--1 demo-block">
+          <p>請選擇語言</p>
+          <div>
+            <input type="radio" name="lang" id="zh-TW" checked>
+            <label for="zh-TW">中文</label>
+            <input type="radio" name="lang" id="en-US">
+            <label for="en-US">English</label>
+          </div>
+
+          <select id="select">
+            <option selected disabled>選擇節日</option>
+            <option>聖誕節</option>
+            <option>跨年</option>
+            <option>除夕</option>
+          </select>
+
+          <div>
+            <input type="checkbox" id="confirmed">
+            <label for="confirmed">我發現上面的游標都是箭頭了</label>
+          </div>
+
+          <div>
+            <input value="送出" type="submit">
+            <button>取消</button>
+          </div>
+
+          <details>
+            <summary>交通資訊</summary>
+            <p></p>
+          </details>
+
+        </section>
+        <small>如果能互動的話，用個指標應該更好？</small>
+        <event-form />
+      </div>
+    </article>
+
+    <section>
+      <h2>延伸閱讀</h2>
+      <enhanced-link href="https://youtu.be/Xc6G3oV24yE">
+        Top 10 CSS One Liner That Will Blow Your Mind</enhanced-link>
+      <p>這部影片提到幾個不錯的CSS屬性配合簡單易懂的 demo，像是 scroll-snap-align，以及上面提到的 scroll-behavior 也是看了影片才知道實際的效果。</p>
+    </section>
+
+  </div>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+</body>
+
+</html>

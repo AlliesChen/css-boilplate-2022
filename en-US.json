@@ -1,0 +1,13 @@
+{
+  "chooseLang": "Please choose your language",
+  "lang": "English",
+  "event": "Pick an event",
+  "christmas": "Christmas",
+  "newYearsEve": "New Year's Eve",
+  "lunarNewYearsEve": "Lunar New Year's Eve",
+  "hint": "I found the cursor becomes to pointer on the elements",
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "traffic": "Tranffic Information",
+  "trafficDetail": "Coming soon"
+}
