@@ -6,9 +6,6 @@ export class NoMarginBlock extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.innerHTML = `
       <style>
-        :host {
-          
-        }
         ::slotted(*) {
           margin: 0;
         }

@@ -15,9 +15,6 @@ export class BorderHandler extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: "open" });
     shadowRoot.innerHTML = `
       <style>
-        :host {
-          
-        }
         ::slotted(*) {
           border-width: 0px;
         }
