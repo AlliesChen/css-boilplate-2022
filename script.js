@@ -7,6 +7,7 @@ import { PlainUList } from "./components/PlainUList.js";
 import { PlainMenu } from "./components/PlainMenu.js";
 import { EnhancedLink } from "./components/EnhancedLink.js";
 import { EventForm } from "./components/EventForm.js";
+import { TableOfContents } from "./components/TableOfContents.js";
 
 customElements.define("no-margin-block", NoMarginBlock);
 customElements.define("content-box", ContentBox);
@@ -17,6 +18,7 @@ customElements.define("plain-u-list", PlainUList);
 customElements.define("plain-menu", PlainMenu);
 customElements.define("enhanced-link", EnhancedLink);
 customElements.define("event-form", EventForm);
+customElements.define("table-of-contents", TableOfContents);
 
 window.addEventListener('load', () => {
   const scrollBehaviorSwitch = document.querySelector('#switch');
@@ -27,15 +29,4 @@ window.addEventListener('load', () => {
 
     html.style.scrollBehavior = isChecked ? 'smooth' : 'auto';
   });
-
-  const showLink = (entries) => {
-    if (entries[0].isIntersecting) {
-      document.querySelector('p[data-link="smoothScroll"]').style.visibility = 'visible';
-      observer.unobserve(scrollBehaviorSwitch)
-    }
-  }
-
-  const observer = new IntersectionObserver(showLink)
-
-  observer.observe(scrollBehaviorSwitch)
 })

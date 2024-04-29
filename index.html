@@ -19,27 +19,37 @@
     <h1 id="title">Demo for modern CSS boilplate?</h1>
 
     <small>發佈時間：2022/12/31</small>
-    <p data-link="smoothScroll" style="visibility: hidden;">回到 <enhanced-link href="#smoothScroll">#Enable smooth
-        scrolling 段落</enhanced-link>
-    </p>
 
-    <p style="text-align: justify;">最近讀到 LogRocket 的 <enhanced-link
+    <table-of-contents>
+      <li><a href="#dont-reset-margins">Don't reset margins</a></li>
+      <li><a href="#definitely-reset-the-box-model">Definitely reset the box model</a></li>
+      <li><a href="#what-you-do-with-borders-is-up-to-you">What you do with borders is up to you</a></li>
+      <li><a href="#force-images-to-behave">Force images to behave</a></li>
+      <li><a href="#reset-most-lists">Reset (most) lists</a></li>
+      <li><a href="#enhance-link-underlines">Enhance link underlines</a></li>
+      <li><a href="#change-the-root-font-size">Change the root font size</a></li>
+      <li><a href="#disable-the-text-inflection-algorithm">Disable the text inflection algorithm</a></li>
+      <li><a href="#enable-smooth-scrolling">Enable smooth scrolling</a></li>
+      <li><a href="#rethink-how-focus-works">Rethink how focus works</a></li>
+      <li><a href="#provide-interactive-elements-with-a-cursor">Provide interactive elements with a cursor</a></li>
+      <li><a href="#read-more">延伸閱讀</a></li>
+    </table-of-contents>
+
+    <p class="introduce">最近讀到 LogRocket 的 <enhanced-link
         href="https://blog.logrocket.com/what-should-modern-css-boilerplate-look-like/">
         What should a
         modern CSS boilplate look like?</enhanced-link> 說到 CSS reset 的觀念，隨著時代演進，不該在只像過往一樣把所有瀏覽器預設的 CSS
-      屬性清乾淨，再重新加上去，可以思考一下其中的屬性是不是有保留的價值，文章很好，但就是...沒有範例，只給了程式碼，所以我做了這個網頁（右下角的小標籤可以連到 <enhanced-link
-        href="https://replit.com/@AlliesChen/css-boilplate-2022#index.html">Replit 看原始碼</enhanced-link>
-      ），呈現文章中所描述的狀況，或是提供我找到的範例，期待可以作為這些條目的閱讀、操作，和理解的輔助😁。
+      屬性清乾淨，再重新加上去，可以思考一下其中的屬性是不是有保留的價值，文章很好，但就是...沒有範例，只給了程式碼，所以我做了這個網頁呈現文章中所描述的狀況，或是提供我找到的範例，期待可以作為這些條目的閱讀、操作，和理解的輔助😁。
     </p>
-    <article>
+    <article id="dont-reset-margins">
       <h2>Don't reset margins</h2>
-      <p>瀏覽器合理地預設了一些元素的邊界值，這篇文章中的 header 和 p tags 都沒有重設過邊界值，如果把它們 reset 掉的話，呈現出來如下方的灰底區：</p>
+      <p>瀏覽器合理地預設了一些元素的邊界值，這篇文章中的 header 和 p tags 都沒有重設過邊界值，如果把它們 reset 掉的話，呈現出來如下方的灰底區；段落間的行距沒有了：</p>
       <no-margin-block class="demo-block">
         <h3>h3 and p tags in no margin block</h3>
         <p>If you reset the margins they looks like this</p>
       </no-margin-block>
     </article>
-    <article>
+    <article id="definitely-reset-the-box-model">
       <h2>Definitely reset the box model</h2>
       <p>因為 border-box 是比較後面才出來的，為了不影響過去的網站設定，它不是瀏覽器預設的 box model 設定，如果我們不主動做 box-sizing: border-box，對於有 padding 和
         margin 的元素，就很容易超出預想的元素大小：
@@ -48,7 +58,7 @@
         <p style="box-sizing: content-box">p tag from content-box has set to width: 100%</p>
       </content-box>
     </article>
-    <article>
+    <article id="what-you-do-with-borders-is-up-to-you">
       <h2>What you do with borders is up to you</h2>
       <p>開發者可以自己決定要不要保留元素預設的外框線：</p>
       <div class="col__flex--1 demo-block">
@@ -61,7 +71,7 @@
       </div>
     </article>
 
-    <article>
+    <article id="force-images-to-behave">
       <h2>Force images to behave</h2>
       <p>img tag 預設是 display: inline，在現代應該是相對少見的選擇，並且，圖片的大小取決於其容器而不是圖片本身更合理對吧？</p>
       <enhanced-link href="https://picsum.photos/">圖片來源：
@@ -80,7 +90,7 @@
         </figure>
       </div>
     </article>
-    <article>
+    <article id="reset-most-lists">
       <h2>Reset (most) lists</h2>
       <p>ol、ul 和 menu tag 的 marker，有時候讓內容更難讀，但也許，比如說在文章的段落中 (article tag) 該留下它們：</p>
       <div class="col__flex--1">
@@ -124,18 +134,18 @@
         </section>
       </div>
     </article>
-    <article>
+    <article id="enhance-link-underlines">
       <h2 id="enhancedLink">Enhance link underlines</h2>
       <p>透過調整 underline 樣式的位置與線粗能讓 anchor tag 更美觀：</p>
       <div class="col__flex--1 demo-block">
         <p>沒有調整底線樣式的</p>
         <a href="#title">回到標題</a>
-        <p>有調整底線樣式的</p>
-        <enhanced-link href="#smoothScroll">去到 #Enable smooth scrolling 段落</enhanced-link>
+        <p>有調整底線樣式的，跟文字間多了一點喘息的空間</p>
+        <enhanced-link href="#title">回到標題</enhanced-link>
       </div>
     </article>
 
-    <article>
+    <article id="change-the-root-font-size">
       <h2>Change the root font size</h2>
       <p>可以針對 html 的 font-size 屬性做調整讓 rem 以 10px 為單位：</p>
       <div class="demo-block">
@@ -144,18 +154,18 @@
       </div>
     </article>
 
-    <article>
+    <article id="disable-the-text-inflection-algorithm">
       <h2>Disable the text inflection algorithm</h2>
       <p>這個我不知道怎麼展示，可以參考 Kilian Valkhof 文章中的圖片說明：</p>
       <enhanced-link href="https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/">Your
         CSS reset needs text-size-adjust (probably)</enhanced-link>
     </article>
 
-    <article>
+    <article id="enable-smooth-scrolling">
       <h2 id="smoothScroll">Enable smooth scrolling</h2>
       <p>這個的效果，在點選連結,頁面捲動到頁面中該元素的過程中可以看出來：</p>
       <section class="demo-block">
-        <enhanced-link href="#enhancedLink">#Enhance link underlines</enhanced-link>
+        <enhanced-link href="#title">回到標題</enhanced-link>
         <!-- reference: https://web.dev/building-a-switch-component/ -->
         <label for="switch" class="gui-switch">
           scroll-behavior
@@ -166,13 +176,13 @@
       </small>
     </article>
 
-    <article>
+    <article id="rethink-how-focus-works">
       <h2>Rethink how focus works</h2>
       <p>這個我試不出來，可以參考 CSS-Tricks 中的圖片說明：</p>
       <enhanced-link href="https://css-tricks.com/almanac/selectors/f/focus-visible/">:focus-visible</enhanced-link>
     </article>
 
-    <article>
+    <article id="provide-interactive-elements-with-a-cursor">
       <h2>Provide interactive elements with a cursor</h2>
       <p>將常見可以互動的元素的滑鼠遊標改為指標：</p>
       <div class="col__flex--1">
@@ -214,7 +224,7 @@
       </div>
     </article>
 
-    <section>
+    <section id="read-more">
       <h2>延伸閱讀</h2>
       <enhanced-link href="https://youtu.be/Xc6G3oV24yE">
         Top 10 CSS One Liner That Will Blow Your Mind</enhanced-link>
@@ -222,13 +232,6 @@
     </section>
 
   </div>
-
-  <!--
-  This script places a badge on your repl's full-browser view back to your repl's cover
-  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
-  teal, blue, blurple, magenta, pink!
-  -->
-  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
 </body>
 
 </html>
